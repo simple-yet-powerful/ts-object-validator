@@ -1,0 +1,16 @@
+{
+  "name": "validation-middleware",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Fred Gomez <fred.titao@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --no-cache"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.4",
+    "jest": "^26.1.0",
+    "ts-jest": "^26.1.1",
+    "typescript": "^3.9.6"
+  }
+}
