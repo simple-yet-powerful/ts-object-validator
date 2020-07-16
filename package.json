@@ -12,7 +12,8 @@
   "scripts": {
     "lint": "eslint 'src/**/*.ts' --quiet --fix",
     "test": "jest --no-cache --coverage",
-    "build": "tsc"
+    "build": "tsc",
+    "prepublishOnly": "yarn lint && yarn test && yarn build"
   },
   "devDependencies": {
     "@types/jest": "^26.0.4",
