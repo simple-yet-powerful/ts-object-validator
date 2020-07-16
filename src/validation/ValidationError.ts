@@ -1,7 +1,5 @@
+import { ValidatorErrorMessage, ValidatorOptions } from '../validator/Validator'
 import { PropertyValidatorContext } from './PropertyValidator'
-import { ValidatorOptions } from '../validator/Validator'
-
-export type ValidatorErrorMessage = (context: { propertyKey: string; value: unknown; contraints: unknown[] }) => string
 
 export const defaultErrorMessage: ValidatorErrorMessage = ({ propertyKey }) => `${propertyKey} is invalid`
 

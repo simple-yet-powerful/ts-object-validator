@@ -1,4 +1,5 @@
-import { ValidationError, ValidatorErrorMessage } from './ValidationError'
+import { ValidatorErrorMessage } from '../validator/Validator'
+import { ValidationError } from './ValidationError'
 
 export type PropertyValidatorOptions = { message?: ValidatorErrorMessage; group?: string }
 export type PropertyValidatorContext = { propertyKey: string } & PropertyValidatorOptions

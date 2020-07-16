@@ -1,6 +1,6 @@
 import { PropertyValidator } from '../validation/PropertyValidator'
-import { ValidationError, ValidatorErrorMessage } from '../validation/ValidationError'
-import { ValidatorOptions } from './Validator'
+import { ValidationError } from '../validation/ValidationError'
+import { ValidatorErrorMessage, ValidatorOptions } from './Validator'
 
 export const NOT_BOOLEAN = 'NOT_BOOLEAN'
 
