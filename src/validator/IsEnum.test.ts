@@ -1,6 +1,6 @@
 import { PropertyValidatorContext } from '../validation/PropertyValidator'
 import { ValidationError } from '../validation/ValidationError'
-import { isEnum, IsEnum } from './isEnum'
+import { isEnum, IsEnum } from './IsEnum'
 
 describe('isEnum', () => {
   enum TestEnum {
