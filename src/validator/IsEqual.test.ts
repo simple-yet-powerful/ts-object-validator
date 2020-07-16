@@ -1,6 +1,6 @@
 import { PropertyValidatorContext } from '../validation/PropertyValidator'
 import { ValidationError } from '../validation/ValidationError'
-import { isEqual, IsEqual } from './isEqual'
+import { isEqual, IsEqual } from './IsEqual'
 
 describe('isEqual', () => {
   test('true', () => {
