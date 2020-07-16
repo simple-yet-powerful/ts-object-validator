@@ -5,7 +5,7 @@ import { ValidatorErrorMessage, ValidatorOptions } from './Validator'
 
 export const MIN_LENGTH = 'MIN_LENGTH'
 
-export const minLengthDefaultErrorMessage: ValidatorErrorMessage = ({ propertyKey, contraints: [min] }) =>
+export const minLengthDefaultErrorMessage: ValidatorErrorMessage = ({ propertyKey, constraints: [min] }) =>
   `${propertyKey}'s length must be longer than or equal to ${min}`
 
 export function minLength(value: unknown, min: number): value is number {

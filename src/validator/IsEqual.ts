@@ -4,7 +4,7 @@ import { ValidatorErrorMessage, ValidatorOptions } from './Validator'
 
 export const NOT_EQUAL = 'NOT_EQUAL'
 
-export const isEqualDefaultErrorMessage: ValidatorErrorMessage = ({ propertyKey, contraints: [reference] }) =>
+export const isEqualDefaultErrorMessage: ValidatorErrorMessage = ({ propertyKey, constraints: [reference] }) =>
   `${propertyKey} is not equal to \`${reference}\``
 
 export function isEqual(reference: unknown, value: unknown): boolean {

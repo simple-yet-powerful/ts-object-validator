@@ -5,7 +5,7 @@ import { ValidatorErrorMessage, ValidatorOptions } from './Validator'
 
 export const MAX_LENGTH = 'MAX_LENGTH'
 
-export const maxLengthDefaultErrorMessage: ValidatorErrorMessage = ({ propertyKey, contraints: [max] }) =>
+export const maxLengthDefaultErrorMessage: ValidatorErrorMessage = ({ propertyKey, constraints: [max] }) =>
   `${propertyKey}'s length must be shorter than or equal to ${max}`
 
 export function maxLength(value: unknown, max: number): value is number {

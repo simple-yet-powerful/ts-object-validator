@@ -12,16 +12,16 @@ export class ValidationError {
     readonly children?: ValidationError[]
   ) {}
   static of(
-    type: string,
+    code: string,
     value: unknown,
     context: PropertyValidatorContext,
     defaultMessage: ValidatorErrorMessage = defaultErrorMessage,
     options: ValidatorOptions = {},
-    contraints: unknown[] = [],
+    constraints: unknown[] = [],
     children?: ValidationError[]
   ): ValidationError {
     const { propertyKey } = context
-    const message = (options?.message ?? defaultMessage)({ propertyKey, value, contraints })
-    return new ValidationError(propertyKey, value, type, message, children)
+    const message = (options?.message ?? defaultMessage)({ propertyKey, value, constraints: constraints })
+    return new ValidationError(propertyKey, value, code, message, children)
   }
 }

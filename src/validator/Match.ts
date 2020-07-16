@@ -5,7 +5,7 @@ import { ValidatorErrorMessage, ValidatorOptions } from './Validator'
 
 export const NO_MATCH = 'NO_MATCH'
 
-export const matchDefaultErrorMessage: ValidatorErrorMessage = ({ propertyKey, contraints: [regexp] }) =>
+export const matchDefaultErrorMessage: ValidatorErrorMessage = ({ propertyKey, constraints: [regexp] }) =>
   `${propertyKey} does not match with the following pattern \`${regexp}\``
 
 export function match(value: unknown, pattern: RegExp): value is string {

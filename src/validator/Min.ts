@@ -5,7 +5,7 @@ import { ValidatorErrorMessage, ValidatorOptions } from './Validator'
 
 export const IS_LOWER = 'IS_LOWER'
 
-export const isLowerDefaultErrorMessage: ValidatorErrorMessage = ({ propertyKey, contraints: [min] }) =>
+export const isLowerDefaultErrorMessage: ValidatorErrorMessage = ({ propertyKey, constraints: [min] }) =>
   `${propertyKey} is lower than ${min}`
 
 export function isLower(value: unknown, min: number): value is number {
