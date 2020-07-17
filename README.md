@@ -206,7 +206,7 @@ const UserSchema: ValidationSchema<User> = {
 Any validator with `options` accepts an `options.message` function to let you customize the error message:
 
 ```typescript
-const myCustomMessage => ({ propertyKey: string, value: unknown, constraints: unknown[] }) => `${propertyKey} is greater than ${constraints[0]}`
+const myCustomMessage = ({ propertyKey: string, value: unknown, constraints: unknown[] }) => `${propertyKey} is greater than ${constraints[0]}`
 ```
 
 ## What next
