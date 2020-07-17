@@ -1,8 +1,8 @@
 {
-  "name": "syp-validation",
-  "description": "Simple Yet Powerful Validation",
+  "name": "object-validator",
+  "description": "A simple yet powerful schema-based object validation package.",
   "version": "1.0.0",
-  "author": "Fred Gomez <fred.titao@gmail.com>",
+  "author": "Fred Gomez <fred.gomez@me.com>",
   "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/@types/index.d.ts",
