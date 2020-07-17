@@ -6,15 +6,15 @@
     "baseUrl": ".",
     "outDir": "./dist",
     "declaration": true,
-    "declarationDir": "./dist/@types",
+    // "declarationDir": "./dist/@types",
     "declarationMap": true,
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "strict": true,
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    // "paths": {
+    //   "@/*": ["src/*"]
+    // }
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist", "**/*.test.ts"]
