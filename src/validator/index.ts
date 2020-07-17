@@ -1,5 +1,6 @@
 export * from './Group'
 export * from './Ignore'
+export * from './IsArray'
 export * from './IsBoolean'
 export * from './IsDate'
 export * from './IsDefined'
