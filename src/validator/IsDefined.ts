@@ -11,7 +11,7 @@ export function isDefined(value: unknown): boolean {
 }
 
 export function IsDefined(options?: ValidatorOptions): PropertyValidator {
-  return (value, context, done) => {
+  return function IsDefined(value, context, done) {
     isDefined(value) || done(ValidationError.of(UNDEFINED, value, context, isDefinedDefaultErrorMessage, options))
   }
 }

@@ -11,7 +11,7 @@ export function isString(value: unknown): value is string {
 }
 
 export function IsString(options?: ValidatorOptions): PropertyValidator {
-  return (value, context, done) => {
+  return function IsString(value, context, done) {
     isString(value) || done(ValidationError.of(NOT_STRING, value, context, isStringDefaultErrorMessage, options))
   }
 }

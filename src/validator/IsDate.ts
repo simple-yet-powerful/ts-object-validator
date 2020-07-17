@@ -15,7 +15,7 @@ export function isDate(value: unknown): value is Date {
 }
 
 export function IsDate(options?: ValidatorOptions): PropertyValidator {
-  return function (value, context, done) {
+  return function IsDate(value, context, done) {
     isDate(value) || done(ValidationError.of(NOT_DATE, value, context, isDateDefaultErrorMessage, options))
   }
 }

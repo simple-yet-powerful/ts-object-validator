@@ -13,7 +13,7 @@ export function match(value: unknown, pattern: RegExp): value is string {
 }
 
 export function Match(regexp: RegExp, options?: ValidatorOptions): PropertyValidator {
-  return (value, context, done) => {
+  return function Match(value, context, done) {
     match(value, regexp) ||
       done(ValidationError.of(NO_MATCH, value, context, matchDefaultErrorMessage, options, [regexp]))
   }

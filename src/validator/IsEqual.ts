@@ -12,7 +12,7 @@ export function isEqual(reference: unknown, value: unknown): boolean {
 }
 
 export function IsEqual(reference: unknown, options?: ValidatorOptions): PropertyValidator {
-  return (value, context, done) => {
+  return function IsEqual(value, context, done) {
     isEqual(reference, value) ||
       done(ValidationError.of(NOT_EQUAL, value, context, isEqualDefaultErrorMessage, options, [reference]))
   }

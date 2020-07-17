@@ -5,7 +5,7 @@ import { PropertyValidator, PropertyValidatorContext } from '../validation/Prope
  * @param condition `(value: unknown, context: PropertyValidatorContext) => boolean`
  */
 export function Ignore(condition?: (value: unknown, context: PropertyValidatorContext) => boolean): PropertyValidator {
-  return (value, context, done) => {
+  return function Ignore(value, context, done) {
     ;(!condition || condition(value, context)) && done()
   }
 }

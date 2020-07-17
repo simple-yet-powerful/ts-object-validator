@@ -13,7 +13,7 @@ export function isEmail(value: unknown): value is string {
 }
 
 export function IsEmail(options?: ValidatorOptions): PropertyValidator {
-  return (value, context, done) => {
+  return function IsEmail(value, context, done) {
     isEmail(value) || done(ValidationError.of(NOT_EMAIL, value, context, isEmailDefaultErrorMessage, options))
   }
 }

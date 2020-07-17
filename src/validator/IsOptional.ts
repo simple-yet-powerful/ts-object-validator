@@ -5,7 +5,7 @@ export function isOptional(value: unknown): boolean {
 }
 
 export function IsOptional(): PropertyValidator {
-  return (value, context, done) => {
+  return function IsOptional(value, context, done) {
     isOptional(value) && done()
   }
 }

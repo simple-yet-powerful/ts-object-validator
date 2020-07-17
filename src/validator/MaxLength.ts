@@ -13,7 +13,7 @@ export function maxLength(value: unknown, max: number): value is number {
 }
 
 export function MaxLength(max: number, options?: ValidatorOptions): PropertyValidator {
-  return function (value, context, done) {
+  return function MaxLength(value, context, done) {
     maxLength(value, max) &&
       done(ValidationError.of(MAX_LENGTH, value, context, maxLengthDefaultErrorMessage, options, [max]))
   }

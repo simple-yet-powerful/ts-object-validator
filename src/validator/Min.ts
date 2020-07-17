@@ -13,7 +13,7 @@ export function isLower(value: unknown, min: number): value is number {
 }
 
 export function Min(min: number, options?: ValidatorOptions): PropertyValidator {
-  return function (value, context, done) {
+  return function Min(value, context, done) {
     isLower(value, min) &&
       done(ValidationError.of(IS_LOWER, value, context, isLowerDefaultErrorMessage, options, [min]))
   }

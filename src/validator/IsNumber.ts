@@ -11,7 +11,7 @@ export function isNumber(value: unknown): value is number {
 }
 
 export function IsNumber(options?: ValidatorOptions): PropertyValidator {
-  return function (value, context, done) {
+  return function IsNumber(value, context, done) {
     isNumber(value) || done(ValidationError.of(NOT_NUMBER, value, context, isNumberDefaultErrorMessage, options))
   }
 }

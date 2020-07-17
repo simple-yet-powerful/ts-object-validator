@@ -12,7 +12,7 @@ export function isUndefined(value: unknown): value is undefined {
 }
 
 export function IsUndefined(options?: ValidatorOptions): PropertyValidator {
-  return (value, context, done) => {
+  return function IsUndefined(value, context, done) {
     isUndefined(value) ||
       done(ValidationError.of(NOT_UNDEFINED, value, context, isUndefinedDefaultErrorMessage, options))
   }

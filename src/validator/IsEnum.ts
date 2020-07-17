@@ -20,7 +20,7 @@ export function isEnum<T>(entity: EnumType, value: unknown): value is T {
 }
 
 export function IsEnum(entity: EnumType, options?: ValidatorOptions): PropertyValidator {
-  return (value, context, done) => {
+  return function IsEnum(value, context, done) {
     isEnum(entity, value) ||
       done(ValidationError.of(NOT_ENUM, value, context, isEnumDefaultErrorMessage, options, [entity]))
   }

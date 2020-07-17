@@ -13,7 +13,7 @@ export function isInteger(value: unknown): value is number {
 }
 
 export function IsInteger(options?: ValidatorOptions): PropertyValidator {
-  return function (value, context, done) {
+  return function IsInteger(value, context, done) {
     isInteger(value) || done(ValidationError.of(NOT_INTEGER, value, context, isIntegerDefaultErrorMessage, options))
   }
 }

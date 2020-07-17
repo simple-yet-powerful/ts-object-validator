@@ -12,7 +12,7 @@ export function isBoolean(value: unknown): value is boolean {
 }
 
 export function IsBoolean(options?: ValidatorOptions): PropertyValidator {
-  return function (value, context, done) {
+  return function IsBoolean(value, context, done) {
     isBoolean(value) || done(ValidationError.of(NOT_BOOLEAN, value, context, isBooleanDefaultErrorMessage, options))
   }
 }

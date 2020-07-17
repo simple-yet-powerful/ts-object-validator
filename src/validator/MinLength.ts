@@ -13,7 +13,7 @@ export function minLength(value: unknown, min: number): value is number {
 }
 
 export function MinLength(min: number, options?: ValidatorOptions): PropertyValidator {
-  return function (value, context, done) {
+  return function MinLength(value, context, done) {
     minLength(value, min) &&
       done(ValidationError.of(MIN_LENGTH, value, context, minLengthDefaultErrorMessage, options, [min]))
   }

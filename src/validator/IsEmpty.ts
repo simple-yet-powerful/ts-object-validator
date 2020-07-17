@@ -10,7 +10,7 @@ export function isEmpty(value: unknown): boolean {
 }
 
 export function IsEmpty(): PropertyValidator {
-  return (value, context, done) => {
+  return function IsEmpty(value, context, done) {
     isEmpty(value) && done()
   }
 }

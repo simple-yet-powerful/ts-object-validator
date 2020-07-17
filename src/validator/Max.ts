@@ -13,7 +13,7 @@ export function isGreater(value: unknown, max: number): value is number {
 }
 
 export function Max(max: number, options?: ValidatorOptions): PropertyValidator {
-  return function (value, context, done) {
+  return function Max(value, context, done) {
     isGreater(value, max) &&
       done(ValidationError.of(IS_GREATER, value, context, isGreaterDefaultErrorMessage, options, [max]))
   }
