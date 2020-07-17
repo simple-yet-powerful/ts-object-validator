@@ -1,5 +1,5 @@
 {
-  "name": "object-validator",
+  "name": "@sypp/object-validator",
   "description": "A simple yet powerful schema-based object validation package.",
   "version": "0.1.0",
   "author": "Fred Gomez <fred.gomez@me.com>",
@@ -26,5 +26,19 @@
     "prettier": "^2.0.5",
     "ts-jest": "^26.1.1",
     "typescript": "^3.9.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simple-yet-powerful/ts-object-validator.git"
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "validation",
+    "schema"
+  ],
+  "bugs": {
+    "url": "https://github.com/simple-yet-powerful/ts-object-validator/issues"
+  },
+  "homepage": "https://github.com/simple-yet-powerful/ts-object-validator#readme"
 }
