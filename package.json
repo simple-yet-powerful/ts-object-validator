@@ -43,5 +43,8 @@
   "bugs": {
     "url": "https://github.com/simple-yet-powerful/ts-object-validator/issues"
   },
-  "homepage": "https://github.com/simple-yet-powerful/ts-object-validator#readme"
+  "homepage": "https://github.com/simple-yet-powerful/ts-object-validator#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }
