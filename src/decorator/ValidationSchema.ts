@@ -4,12 +4,12 @@ import { ValidationSchemaOptions } from '../schema/ValidationSchemaInterface'
 import { ObjectValidator } from '../validation/ObjectValidator'
 import { SchemaBuilder } from './SchemaBuilder'
 
-export const METADATA_KEY = 'ObjectValidator'
+export const VALIDATOR_METADATA_KEY = 'ObjectValidator'
 
 export function ValidationSchema(options?: ValidationSchemaOptions): ClassDecorator {
   return function (target) {
     const schema = SchemaBuilder.of(target, options).build()
     const validator = ObjectValidator.of(schema)
-    Reflect.defineMetadata(METADATA_KEY, validator, target)
+    Reflect.defineMetadata(VALIDATOR_METADATA_KEY, validator, target)
   }
 }

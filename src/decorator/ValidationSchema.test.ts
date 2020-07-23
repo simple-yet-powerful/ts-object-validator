@@ -1,11 +1,11 @@
 import { ObjectValidator } from '../validation/ObjectValidator'
-import { METADATA_KEY, ValidationSchema } from './ValidationSchema'
+import { VALIDATOR_METADATA_KEY, ValidationSchema } from './ValidationSchema'
 
 describe('Validate', () => {
   test('Build ObjectValidator no options', () => {
     @ValidationSchema()
     class TestClass {}
-    const validator = Reflect.getMetadata(METADATA_KEY, TestClass) as ObjectValidator<TestClass>
+    const validator = Reflect.getMetadata(VALIDATOR_METADATA_KEY, TestClass) as ObjectValidator<TestClass>
     expect(validator).toBeInstanceOf(ObjectValidator)
     expect(validator.schema.allowMissingProperties).toBe(undefined)
     expect(validator.schema.allowUnknownProperties).toBe(undefined)
@@ -16,7 +16,7 @@ describe('Validate', () => {
   test('Build ObjectValidator w/ options', () => {
     @ValidationSchema({ allowMissingProperties: true, allowUnknownProperties: true, name: 'Test Schema' })
     class TestClass {}
-    const validator = Reflect.getMetadata(METADATA_KEY, TestClass) as ObjectValidator<TestClass>
+    const validator = Reflect.getMetadata(VALIDATOR_METADATA_KEY, TestClass) as ObjectValidator<TestClass>
     expect(validator).toBeInstanceOf(ObjectValidator)
     expect(validator.schema.allowMissingProperties).toBe(true)
     expect(validator.schema.allowUnknownProperties).toBe(true)

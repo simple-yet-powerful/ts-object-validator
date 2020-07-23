@@ -3,7 +3,7 @@ import 'reflect-metadata'
 import { ValidationSchemaInterface, ValidationSchemaOptions } from '../schema/ValidationSchemaInterface'
 import { PropertyValidator } from '../validation/PropertyValidator'
 
-export const METADATA_KEY = 'ObjectValidator'
+export const SCHEMA_METADATA_KEY = 'SchemaBuilder'
 
 export class SchemaBuilder {
   readonly properties: { [propertyKey: string]: PropertyValidator[] } = {}
@@ -12,13 +12,13 @@ export class SchemaBuilder {
 
   static of(target: Object, options?: ValidationSchemaOptions): SchemaBuilder {
     const translatedTarget = typeof target === 'object' ? target.constructor : target
-    if (Reflect.hasMetadata(METADATA_KEY, translatedTarget)) {
-      const builder = Reflect.getMetadata(METADATA_KEY, translatedTarget) as SchemaBuilder
+    if (Reflect.hasMetadata(SCHEMA_METADATA_KEY, translatedTarget)) {
+      const builder = Reflect.getMetadata(SCHEMA_METADATA_KEY, translatedTarget) as SchemaBuilder
       builder.options = options
       return builder
     }
     const builder = new SchemaBuilder(translatedTarget, options)
-    Reflect.defineMetadata(METADATA_KEY, builder, translatedTarget)
+    Reflect.defineMetadata(SCHEMA_METADATA_KEY, builder, translatedTarget)
     return builder
   }
 

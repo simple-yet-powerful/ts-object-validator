@@ -3,7 +3,7 @@ import { PropertyValidator } from '../validation/PropertyValidator'
 import { IsEmail } from '../validator/IsEmail'
 import { IsOptional } from '../validator/IsOptional'
 import { Validate } from './Validate'
-import { METADATA_KEY, ValidationSchema } from './ValidationSchema'
+import { VALIDATOR_METADATA_KEY, ValidationSchema } from './ValidationSchema'
 
 describe('Validate', () => {
   test('Build ObjectValidator w/ Single PropertyValidator', () => {
@@ -12,7 +12,7 @@ describe('Validate', () => {
       @Validate(IsEmail())
       prop1?: string
     }
-    const validator = Reflect.getMetadata(METADATA_KEY, TestClass) as ObjectValidator<TestClass>
+    const validator = Reflect.getMetadata(VALIDATOR_METADATA_KEY, TestClass) as ObjectValidator<TestClass>
     const validators = validator.schema.properties.prop1 as PropertyValidator[]
     expect(validators).toBeDefined()
     expect(validators[0]).toBeInstanceOf(Function)
@@ -24,7 +24,7 @@ describe('Validate', () => {
       @Validate([IsOptional(), IsEmail()])
       prop1?: string
     }
-    const validator = Reflect.getMetadata(METADATA_KEY, TestClass) as ObjectValidator<TestClass>
+    const validator = Reflect.getMetadata(VALIDATOR_METADATA_KEY, TestClass) as ObjectValidator<TestClass>
     const validators = validator.schema.properties.prop1 as PropertyValidator[]
     expect(validators).toBeDefined()
     expect(validators[0]).toBeInstanceOf(Function)
