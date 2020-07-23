@@ -1,9 +1,8 @@
 import { ObjectValidator } from '../validation/ObjectValidator'
-import { Validate } from './Validate'
+import { PropertyValidator } from '../validation/PropertyValidator'
 import { IsEmail } from '../validator/IsEmail'
 import { IsOptional } from '../validator/IsOptional'
-import { Group } from '../validator/Group'
-import { PropertyValidator } from '../validation/PropertyValidator'
+import { Validate } from './Validate'
 import { METADATA_KEY, ValidationSchema } from './ValidationSchema'
 
 describe('Validate', () => {
