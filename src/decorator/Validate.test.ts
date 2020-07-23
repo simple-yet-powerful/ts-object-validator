@@ -1,25 +1,36 @@
 import { ObjectValidator } from '../validation/ObjectValidator'
-import { METADATA_KEY, Validate } from './Validate'
+import { Validate } from './Validate'
+import { IsEmail } from '../validator/IsEmail'
+import { IsOptional } from '../validator/IsOptional'
+import { Group } from '../validator/Group'
+import { PropertyValidator } from '../validation/PropertyValidator'
+import { METADATA_KEY, ValidationSchema } from './ValidationSchema'
 
 describe('Validate', () => {
-  test('Build ObjectValidator w/ no options', () => {
-    @Validate()
-    class TestClass {}
+  test('Build ObjectValidator w/ Single PropertyValidator', () => {
+    @ValidationSchema()
+    class TestClass {
+      @Validate(IsEmail())
+      prop1?: string
+    }
     const validator = Reflect.getMetadata(METADATA_KEY, TestClass) as ObjectValidator<TestClass>
-    expect(validator).toBeInstanceOf(ObjectValidator)
-    expect(validator.schema.allowMissingProperties).toBe(undefined)
-    expect(validator.schema.allowUnknownProperties).toBe(undefined)
-    expect(validator.schema.name).toBe(undefined)
-    const sameValidator = ObjectValidator.of(TestClass)
-    expect(sameValidator).toBe(validator)
+    const validators = validator.schema.properties.prop1 as PropertyValidator[]
+    expect(validators).toBeDefined()
+    expect(validators[0]).toBeInstanceOf(Function)
+    expect(validators[0].name).toBe('IsEmail')
   })
-  test('Build ObjectValidator w/ options', () => {
-    @Validate({ allowMissingProperties: true, allowUnknownProperties: true, name: 'Test Schema' })
-    class TestClass {}
+  test('Build ObjectValidator w/ Array of PropertyValidator', () => {
+    @ValidationSchema()
+    class TestClass {
+      @Validate([IsOptional(), IsEmail()])
+      prop1?: string
+    }
     const validator = Reflect.getMetadata(METADATA_KEY, TestClass) as ObjectValidator<TestClass>
-    expect(validator).toBeInstanceOf(ObjectValidator)
-    expect(validator.schema.allowMissingProperties).toBe(true)
-    expect(validator.schema.allowUnknownProperties).toBe(true)
-    expect(validator.schema.name).toBe('Test Schema')
+    const validators = validator.schema.properties.prop1 as PropertyValidator[]
+    expect(validators).toBeDefined()
+    expect(validators[0]).toBeInstanceOf(Function)
+    expect(validators[0].name).toBe('IsOptional')
+    expect(validators[1]).toBeInstanceOf(Function)
+    expect(validators[1].name).toBe('IsEmail')
   })
 })

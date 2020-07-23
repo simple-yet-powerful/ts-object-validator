@@ -3,7 +3,7 @@ import { ValidationSchema } from '../schema/ValidationSchema'
 import { Nested } from '../validator/Nested'
 import { PropertyValidator, PropertyValidatorExecutor } from './PropertyValidator'
 import { ValidationError } from './ValidationError'
-import { METADATA_KEY } from '../decorator/Validate'
+import { METADATA_KEY } from '../decorator/ValidationSchema'
 
 export const IS_MISSING = 'IS_MISSING'
 export const IS_UNKNOWN = 'IS_UNKNOWN'
