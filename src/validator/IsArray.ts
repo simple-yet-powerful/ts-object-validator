@@ -18,7 +18,7 @@ export function IsArray(
 ): PropertyValidator {
   return function IsArray(value, context, done) {
     if (isArray(value)) {
-      if (isArray(entryValidators)) {
+      if (entryValidators) {
         const { propertyKey } = context
         const errors: ValidationError[] = []
         value.forEach((entry, index) => {
