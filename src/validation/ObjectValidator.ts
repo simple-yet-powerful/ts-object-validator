@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { ValidationSchema } from '../schema/ValidationSchema'
+import { ValidationSchemaInterface } from '../schema/ValidationSchemaInterface'
 import { Nested } from '../validator/Nested'
 import { PropertyValidator, PropertyValidatorExecutor } from './PropertyValidator'
 import { ValidationError } from './ValidationError'
@@ -13,13 +13,13 @@ export type ValidationOptions = {
 }
 
 export class ObjectValidator<T> {
-  constructor(public schema: ValidationSchema<T>) {}
+  constructor(public schema: ValidationSchemaInterface<T>) {}
 
   static of<T>(classType: { new (): T }): ObjectValidator<T>
-  static of<T>(schema: ValidationSchema<T>): ObjectValidator<T>
-  static of<T>(schema: ValidationSchema<T> | { new (): T }): ObjectValidator<T> {
+  static of<T>(schema: ValidationSchemaInterface<T>): ObjectValidator<T>
+  static of<T>(schema: ValidationSchemaInterface<T> | { new (): T }): ObjectValidator<T> {
     return typeof schema === 'object'
-      ? new this(schema as ValidationSchema<T>)
+      ? new this(schema as ValidationSchemaInterface<T>)
       : (Reflect.getMetadata(METADATA_KEY, schema) as ObjectValidator<T>)
   }
 
@@ -66,7 +66,7 @@ export class ObjectValidator<T> {
   public getPropertyValidators<T>(propertyKey: string): PropertyValidator[] {
     const schemaProperties = this.schema.properties as Record<
       string,
-      PropertyValidator | PropertyValidator[] | ValidationSchema<T>
+      PropertyValidator | PropertyValidator[] | ValidationSchemaInterface<T>
     >
     const validators = schemaProperties[propertyKey] ?? []
     if (Array.isArray(validators)) {
@@ -75,7 +75,7 @@ export class ObjectValidator<T> {
     if (typeof validators === 'function') {
       return [validators as PropertyValidator]
     }
-    return [Nested<T>(validators as ValidationSchema<T>)]
+    return [Nested<T>(validators as ValidationSchemaInterface<T>)]
   }
 
   /**

@@ -1,4 +1,4 @@
-import { ValidationSchema } from '../schema/ValidationSchema'
+import { ValidationSchemaInterface } from '../schema/ValidationSchemaInterface'
 import { PropertyValidator } from '../validation/PropertyValidator'
 import { ValidationError } from '../validation/ValidationError'
 import { Nested } from './Nested'
@@ -13,7 +13,7 @@ describe('Nested', () => {
   test('Ok', () => {
     const propertyKey = 'prop1'
     const done = jest.fn()
-    const schema: ValidationSchema = {
+    const schema: ValidationSchemaInterface = {
       properties: {
         nestedProp1: IsError,
       },
@@ -24,7 +24,7 @@ describe('Nested', () => {
   test('ValidationError', () => {
     const propertyKey = 'prop1'
     const done = jest.fn()
-    const schema: ValidationSchema = {
+    const schema: ValidationSchemaInterface = {
       properties: {
         nestedProp1: IsError,
       },

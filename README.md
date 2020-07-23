@@ -36,7 +36,7 @@ export class User {
   public roles: UserRole[]
 }
 
-export const UserSchema: ValidationSchema<User> = {
+export const UserSchema: ValidationSchemaInterface<User> = {
   allowMissingProperties: true,
   properties: {
     id: IsUndefined(),
@@ -62,7 +62,7 @@ if (errors.length > 0) {
 ## Validation schema
 
 ```typescript
-const MyValidationSchema: ValidationSchema<MyClass> = {
+const MyValidationSchema: ValidationSchemaInterface<MyClass> = {
   allowUnknownProperties: true,
   allowMissingProperties: true,
   properties: {
@@ -98,7 +98,7 @@ class User {
   public profile: UserProfile // => a nested object to validate
 }
 
-const UserSchema: ValidationSchema<User> = {
+const UserSchema: ValidationSchemaInterface<User> = {
   properties: {
     /* … */
     profile: {
@@ -118,7 +118,7 @@ const UserSchema: ValidationSchema<User> = {
 ### Optional nested objects
 
 ```typescript
-const UserSchema: ValidationSchema<User> = {
+const UserSchema: ValidationSchemaInterface<User> = {
   properties: {
     /* … */
     profile: [
@@ -141,7 +141,7 @@ const UserSchema: ValidationSchema<User> = {
 The order of the validators matter. Ex: `IsOptional()` should be before any type validator like `IsString()`, otherwise `IsOptional()` will have no effect.
 
 ```typescript
-const MyValidationSchema: ValidationSchema<MyClass> = {
+const MyValidationSchema: ValidationSchemaInterface<MyClass> = {
   properties: {
     prop1: [IsOptional(), IsString(), MinLength(2) /* … */],
     // …
@@ -149,29 +149,29 @@ const MyValidationSchema: ValidationSchema<MyClass> = {
 }
 ```
 
-| Validator                                   | Description                                                                                                       |
-| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `Group(name: string, validators: [])`       | Group validators that will apply only when you call `ObjectValidator.validate(…)` with the `group` option.        |
-| `Ignore()`                                  | Just skip the property validation. Useless for plain object validation.                                           |
-| `IsArray(validators?: [], options?: {})`    | Checks if the value is an `Array` object. You can also validate the inner values with the `validators` parameter. |
-| `IsBoolean(options?: {})`                   | Checks if the value is a `boolean`.                                                                               |
-| `IsDate(options?: {})`                      | Checks if the value is a `Date` object.                                                                           |
-| `IsDefined(options?: {})`                   | Checks if the value is a not `undefined` or `null`.                                                               |
-| `IsEmail(options?: {})`                     | Checks if the value is a valid email address.                                                                     |
-| `IsEmpty()`                                 | Do not report error if the value is `undefined`, `null` or `''`.                                                  |
-| `IsEnum(entity: enum, options?: {})`        | Checks if the value is a valid enum.                                                                              |
-| `IsEqual(reference: unknown, options?: {})` | Checks if the value is `===` to `reference`.                                                                      |
-| `IsInteger(options?: {})`                   | Checks if the value is an `integer` `number`.                                                                     |
-| `IsNumber(options?: {})`                    | Checks if the value is a `number`.                                                                                |
-| `IsOptional()`                              | Do not report error if the value is `undefined` or `null`.                                                        |
-| `IsString(options?: {})`                    | Checks if the value is a `string`.                                                                                |
-| `IsUndefined(options?: {})`                 | Checks if the value is `undefined`.                                                                               |
-| `Match(pattern: RegExp, options?: {})`      | Checks if the value matches with the RegExp `pattern`.                                                            |
-| `Max(max: number, options?: {})`            | Checks if the value is lower or equal to `max`.                                                                   |
-| `MaxLength(max: number, options?: {})`      | Checks if the length of the string value is less or equel to `max`.                                               |
-| `Min(min: number, options?: {})`            | Checks if the value is greater or equal to `min`.                                                                 |
-| `MinLength(min: number, options?: {})`      | Checks if the length of the string value is greater or equal to `min`.                                            |
-| `Nested<T>(schema: ValidationSchema)`       | Checks the value for nested validation schema.                                                                    |
+| Validator                                      | Description                                                                                                       |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `Group(name: string, validators: [])`          | Group validators that will apply only when you call `ObjectValidator.validate(…)` with the `group` option.        |
+| `Ignore()`                                     | Just skip the property validation. Useless for plain object validation.                                           |
+| `IsArray(validators?: [], options?: {})`       | Checks if the value is an `Array` object. You can also validate the inner values with the `validators` parameter. |
+| `IsBoolean(options?: {})`                      | Checks if the value is a `boolean`.                                                                               |
+| `IsDate(options?: {})`                         | Checks if the value is a `Date` object.                                                                           |
+| `IsDefined(options?: {})`                      | Checks if the value is a not `undefined` or `null`.                                                               |
+| `IsEmail(options?: {})`                        | Checks if the value is a valid email address.                                                                     |
+| `IsEmpty()`                                    | Do not report error if the value is `undefined`, `null` or `''`.                                                  |
+| `IsEnum(entity: enum, options?: {})`           | Checks if the value is a valid enum.                                                                              |
+| `IsEqual(reference: unknown, options?: {})`    | Checks if the value is `===` to `reference`.                                                                      |
+| `IsInteger(options?: {})`                      | Checks if the value is an `integer` `number`.                                                                     |
+| `IsNumber(options?: {})`                       | Checks if the value is a `number`.                                                                                |
+| `IsOptional()`                                 | Do not report error if the value is `undefined` or `null`.                                                        |
+| `IsString(options?: {})`                       | Checks if the value is a `string`.                                                                                |
+| `IsUndefined(options?: {})`                    | Checks if the value is `undefined`.                                                                               |
+| `Match(pattern: RegExp, options?: {})`         | Checks if the value matches with the RegExp `pattern`.                                                            |
+| `Max(max: number, options?: {})`               | Checks if the value is lower or equal to `max`.                                                                   |
+| `MaxLength(max: number, options?: {})`         | Checks if the length of the string value is less or equel to `max`.                                               |
+| `Min(min: number, options?: {})`               | Checks if the value is greater or equal to `min`.                                                                 |
+| `MinLength(min: number, options?: {})`         | Checks if the length of the string value is greater or equal to `min`.                                            |
+| `Nested<T>(schema: ValidationSchemaInterface)` | Checks the value for nested validation schema.                                                                    |
 
 Any validator with `options` accepts an `options.message` function to let you customize the error message:
 

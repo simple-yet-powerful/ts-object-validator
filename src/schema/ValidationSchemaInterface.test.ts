@@ -1,10 +1,10 @@
 import { PropertyValidator } from '../validation/PropertyValidator'
-import { ValidationSchema } from './ValidationSchema'
+import { ValidationSchemaInterface } from './ValidationSchemaInterface'
 
-describe('ValidationSchema', () => {
+describe('ValidationSchemaInterface', () => {
   const TestValidator: PropertyValidator = (value, ctx, done) => done
   test('From plain object', () => {
-    const schema: ValidationSchema = {
+    const schema: ValidationSchemaInterface = {
       name: 'Name',
       allowMissingProperties: true,
       allowUnknownProperties: true,
@@ -38,7 +38,7 @@ describe('ValidationSchema', () => {
         ''
       }
     }
-    const schema: ValidationSchema<TestClass> = {
+    const schema: ValidationSchemaInterface<TestClass> = {
       name: 'Name',
       allowMissingProperties: true,
       allowUnknownProperties: true,

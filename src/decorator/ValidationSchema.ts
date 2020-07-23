@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import 'reflect-metadata'
-import { ValidationSchemaOptions } from '../schema/ValidationSchema'
+import { ValidationSchemaOptions } from '../schema/ValidationSchemaInterface'
 import { ObjectValidator } from '../validation/ObjectValidator'
 import { SchemaBuilder } from './SchemaBuilder'
 

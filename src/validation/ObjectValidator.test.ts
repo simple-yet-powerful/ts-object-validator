@@ -1,4 +1,4 @@
-import { ValidationSchema } from '../schema/ValidationSchema'
+import { ValidationSchemaInterface } from '../schema/ValidationSchemaInterface'
 import { Nested } from '../validator/Nested'
 import { ObjectValidator } from './ObjectValidator'
 import { PropertyValidator } from './PropertyValidator'
@@ -11,11 +11,11 @@ const IsError: PropertyValidator = (value, { propertyKey }, done): void => {
   Boolean(value) && done(new ValidationError(propertyKey, value, 'IS_ERROR', `${propertyKey} is invalid`))
 }
 
-describe('ObjectValidator with ValidationSchema<unkown>', () => {
+describe('ObjectValidator with ValidationSchemaInterface<unkown>', () => {
   beforeEach(() => {
     jest.resetAllMocks()
   })
-  const schema: ValidationSchema = {
+  const schema: ValidationSchemaInterface = {
     properties: {
       prop1: IsError,
       prop2: IsError,
@@ -79,12 +79,12 @@ describe('ObjectValidator with ValidationSchema<unkown>', () => {
     expect(errors[2].code).toBe('IS_ERROR')
   })
 })
-describe('ObjectValidator > with ValidationSchema<T>', () => {
+describe('ObjectValidator > with ValidationSchemaInterface<T>', () => {
   class TestClass {
     constructor(public prop1?: boolean, public prop2?: boolean, public prop3?: boolean) {}
   }
   test('class object', () => {
-    const schema: ValidationSchema<TestClass> = {
+    const schema: ValidationSchemaInterface<TestClass> = {
       properties: {
         prop1: IsError,
         prop2: IsError,
@@ -99,7 +99,7 @@ describe('ObjectValidator > with ValidationSchema<T>', () => {
     expect(errors[1].code).toBe('IS_ERROR')
   })
   test('plain object', () => {
-    const schema: ValidationSchema<TestClass> = {
+    const schema: ValidationSchemaInterface<TestClass> = {
       properties: {
         prop1: IsError,
         prop2: IsError,
@@ -126,8 +126,8 @@ describe('ObjectValidator > Nested objects', () => {
   class TestClass {
     constructor(public prop1?: boolean, public prop2?: boolean, public prop3?: TestNestedClass) {}
   }
-  test('with ValidationSchema', () => {
-    const schema: ValidationSchema<TestClass> = {
+  test('with ValidationSchemaInterface', () => {
+    const schema: ValidationSchemaInterface<TestClass> = {
       properties: {
         prop1: IsError,
         prop2: IsError,
@@ -155,7 +155,7 @@ describe('ObjectValidator > Nested objects', () => {
     expect(errors[2].children?.[1].code).toBe('IS_ERROR')
   })
   test('with Nested()', () => {
-    const schema: ValidationSchema<TestClass> = {
+    const schema: ValidationSchemaInterface<TestClass> = {
       properties: {
         prop1: IsError,
         prop2: IsError,
