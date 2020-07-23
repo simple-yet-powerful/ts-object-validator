@@ -2,7 +2,7 @@ import { PropertyValidator } from '../validation/PropertyValidator'
 import { ValidationError } from '../validation/ValidationError'
 import { ValidatorErrorMessage, ValidatorOptions } from './Validator'
 
-type EnumType = {
+export type EnumType = {
   [Key: number]: unknown
   [Key: string]: unknown
 }
