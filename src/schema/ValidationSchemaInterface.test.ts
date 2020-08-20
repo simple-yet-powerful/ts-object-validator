@@ -34,8 +34,18 @@ describe('ValidationSchemaInterface', () => {
         public prop5: NestedTestClass,
         public method1: () => ''
       ) {}
-      public method2() {
-        ''
+      public get prop6(): string {
+        return this.prop1
+      }
+      public set prop6(val: string) {
+        this.prop1 = val
+      }
+      private method2(): string {
+        return ''
+      }
+      toJSON() {
+        const { prop6 } = this
+        return Object.assign({}, this, { prop6 })
       }
     }
     const schema: ValidationSchemaInterface<TestClass> = {
@@ -56,8 +66,9 @@ describe('ValidationSchemaInterface', () => {
             nestedProp3: TestValidator,
           },
         },
+        prop6: TestValidator,
         method1: TestValidator,
-        method2: TestValidator,
+        toJSON: TestValidator,
       },
     }
     expect(schema).toBeTruthy()
