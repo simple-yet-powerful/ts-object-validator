@@ -28,6 +28,12 @@ describe('IsArray', () => {
     IsArray()([], context, done)
     expect(done).toBeCalledTimes(0)
   })
+  test('Ok > with entryValidators', () => {
+    const Ignore: PropertyValidator = (value, ctx, done): void => done()
+    IsArray(Ignore)([1, 2], context, done)
+    IsArray()([], context, done)
+    expect(done).toBeCalledTimes(0)
+  })
   test('ValidationError > NOT_ARRAY', () => {
     IsArray()('not an array', context, done)
     expect(done).toBeCalledTimes(1)

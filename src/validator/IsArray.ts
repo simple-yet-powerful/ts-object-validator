@@ -27,7 +27,7 @@ export function IsArray(
             errors.push(error)
           }
         })
-        if (errors) {
+        if (errors.length) {
           done(ValidationError.of(INVALID_ARRAY, value, context, invalidArrayDefaultErrorMessage, options, [], errors))
         }
       }
