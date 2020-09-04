@@ -71,11 +71,11 @@ const MyValidationSchema: ValidationSchemaInterface<MyClass> = {
 }
 ```
 
-| Property                 | Type    | Default    | Description                                                        |
-| ------------------------ | ------- | ---------- | ------------------------------------------------------------------ |
-| `allowUnknownProperties` | boolean | `false`    | Avoid unknown properties error report from the object to validate. |
-| `allowMissingProperties` | boolean | `false`    | Avoid missing properties error report from the object to validate. |
-| `properties`             | boolean | _required_ | Avoid missing validator error from the validation schema.          |
+| Property                 | Type              | Default    | Description                                                                                                                                                             |
+| ------------------------ | ----------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `allowUnknownProperties` | boolean\|string[] | `false`    | If `true`, avoids to report unknown properties from the object to validate.<br> If `Array`, avoids to report the listed unknown properties from the object to validate. |
+| `allowMissingProperties` | boolean\|string[] | `false`    | If `true`, avoids to report missing properties from the object to validate.<br> If `Array`, avoids to report the listed missing properties from the object to validate. |
+| `properties`             | object            | _required_ | Avoid missing validator error from the validation schema.                                                                                                               |
 
 ### Working with nested objects
 

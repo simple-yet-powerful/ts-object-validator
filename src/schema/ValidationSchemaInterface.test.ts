@@ -73,4 +73,17 @@ describe('ValidationSchemaInterface', () => {
     }
     expect(schema).toBeTruthy()
   })
+  test('with allowMissingProperties as array', () => {
+    class TestClass {
+      constructor(public prop1: string, public prop2: number) {}
+    }
+    const schema: ValidationSchemaInterface<TestClass> = {
+      allowMissingProperties: ['prop2'],
+      properties: {
+        prop1: TestValidator,
+        prop2: TestValidator,
+      },
+    }
+    expect(schema).toBeTruthy()
+  })
 })

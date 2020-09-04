@@ -1,12 +1,14 @@
 import { PropertyValidator } from '../validation/PropertyValidator'
 
-export type ValidationSchemaOptions = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ValidationSchemaOptions<T = any> = {
   name?: string
-  allowUnknownProperties?: boolean
-  allowMissingProperties?: boolean
+  allowUnknownProperties?: boolean | string[]
+  allowMissingProperties?: boolean | (keyof Required<T>)[]
 }
 
-export interface ValidationSchemaInterface<T = unknown> extends ValidationSchemaOptions {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export interface ValidationSchemaInterface<T = any> extends ValidationSchemaOptions<T> {
   properties: {
     [K in keyof Required<T>]: PropertyValidator | PropertyValidator[] | ValidationSchemaInterface<T[K]>
   }
