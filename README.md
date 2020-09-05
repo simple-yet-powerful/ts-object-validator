@@ -161,6 +161,7 @@ const MyValidationSchema: ValidationSchemaInterface<MyClass> = {
 | `IsEmpty()`                                    | Do not report error if the value is `undefined`, `null` or `''`.                                                  |
 | `IsEnum(entity: enum, options?: {})`           | Checks if the value is a valid enum.                                                                              |
 | `IsEqual(reference: unknown, options?: {})`    | Checks if the value is `===` to `reference`.                                                                      |
+| `IsIn(values: [], options?: {})`               | Checks if the value is `===` to one of the values of `values`.                                                    |
 | `IsInteger(options?: {})`                      | Checks if the value is an `integer` `number`.                                                                     |
 | `IsNumber(options?: {})`                       | Checks if the value is a `number`.                                                                                |
 | `IsOptional()`                                 | Do not report error if the value is `undefined` or `null`.                                                        |
