@@ -34,7 +34,7 @@ describe('MissingPropertiesValidator', () => {
   })
   test('allowMissingProperties: []', () => {
     const schema: ValidationSchemaInterface = {
-      allowMissingProperties: ['prop1'],
+      allowMissingProperties: ['prop3'],
       properties: {
         prop1: Ignore,
         prop2: Ignore,
