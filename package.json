@@ -1,7 +1,7 @@
 {
   "name": "@sypp/object-validator",
   "description": "A simple yet powerful schema-based object validation package.",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": "Fred Gomez <fred.gomez@me.com>",
   "license": "MIT",
   "main": "./dist/index.js",
