@@ -1,3 +1,6 @@
+export * from './MissingPropertiesValidator'
+export * from './ObjectPropertiesValidator'
 export * from './ObjectValidator'
 export * from './PropertyValidator'
+export * from './UnknownPropertiesValidator'
 export * from './ValidationError'
